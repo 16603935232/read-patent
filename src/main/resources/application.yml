@@ -1,0 +1,18 @@
+server:
+  port: 9012
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: read-patent
+  data:
+    mongodb:
+      uri: mongodb://zhaofeng:HEsMc4TBnbqS4yEc@172.16.8.93:27017/?authSource=admin
+      database: cn
+  elasticsearch:
+    rest:
+      uris: http://172.16.8.110:9200,http://172.16.8.111:9200,http://172.16.8.112:9200
+      connection-timeout: 20000
+      read-timeout: 100000
+      username: elastic
+      password: Elastic123a#Bt
