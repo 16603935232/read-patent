@@ -219,6 +219,7 @@ public class PatentController {
                     // 将索引写入批量请求
                     restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
                     bulkRequest = new BulkRequest();
+                    log.info("已处理{}条文档。", count);
                 }
             }
             // 处理剩余的文档
@@ -226,13 +227,14 @@ public class PatentController {
                 // 将索引写入批量请求
                 restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
             }
+            log.info("处理完成，共处理{}条文档。", count);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return Result.ok(Boolean.TRUE);
     }
 
-    @ApiOperation(value = "添加ES索引的字段")
+    @ApiOperation(value = "添加ES索引的字段（在专利索引，增加history、legal对象字段）")
     @PostMapping("/insertIndexField")
     public Result<Boolean> insertIndexField(String collectionName, String indexName) {
         // 每页的文档数量
@@ -263,6 +265,7 @@ public class PatentController {
                     // 将索引写入批量请求
                     restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
                     bulkRequest = new BulkRequest();
+                    log.info("已处理{}条文档。", count);
                 }
             }
             // 处理剩余的文档
@@ -270,6 +273,7 @@ public class PatentController {
                 // 将索引写入批量请求
                 restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
             }
+            log.info("处理完成，共处理{}条文档。", count);
         } catch (Exception e) {
             e.printStackTrace();
         }
